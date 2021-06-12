@@ -1,5 +1,9 @@
 # Deep AM-FM Baseline
 
+The baseline is a modified version of the deep AM-FM toolkit presented in the original paper, "Deep AM-FM: Toolkit for Automatic Dialogue Evaluation". 
+<br />
+The baseline consists of two components, the adequacy metric (AM) and fluency metric (FM). AM aims to assess the semantic aspect of system responses while FM aims to assess the syntactic validity of system responses.
+
 ## System Requirements
 
 1. python 3.x
