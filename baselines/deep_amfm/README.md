@@ -4,9 +4,7 @@
 
 This component aims to assess the semantic aspect of system responses.
 
-### Run Adequacy Evaluation
-
-#### 1. Fine-tune BERT-base Model (In this step, you may customize your own training dataset)
+### 1. Fine-tune BERT-base Model (In this step, you may customize your own training dataset)
 ```
 #!/bin/bash                                                                                                                                                                                                    
 data_dir=/path/to/pretraining/dialogue/dataset
@@ -26,7 +24,7 @@ python run_language_modeling.py \
 	--mlm
 ```
 
-##### 2. Create preprocessed training and validation data with specific training size. This step is to conduct preprocessing on the twitter dialogues.
+### 2. Compute Reference-based Adequacy Metric Scores.
 ```bash
 python ../../engines/embedding_models/bert/create_raw_data.py \
   --train_file=/path/to/train.txt \
