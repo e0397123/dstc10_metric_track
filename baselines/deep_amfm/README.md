@@ -78,3 +78,21 @@ python compute_dial.py \
     --fm_model_path=language_models/full_fm \
     --criterion=${dialogue qualities to evaluate (separated by commas)}
 ```
+
+### Reference
+
+```
+@Inbook{Zhang2021,
+    author="Zhang, Chen
+            and D'Haro, Luis Fernando
+            and Banchs, Rafael E.
+            and Friedrichs, Thomas
+            and Li, Haizhou",
+    title="Deep AM-FM: Toolkit for Automatic Dialogue Evaluation",
+    bookTitle="Conversational Dialogue Systems for the Next Decade",
+    year="2021",
+    pages="53--69",
+    isbn="978-981-15-8395-7",
+    doi="10.1007/978-981-15-8395-7_5"
+}
+```
