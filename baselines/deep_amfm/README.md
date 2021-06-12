@@ -14,7 +14,7 @@ The baseline consists of two components, the adequacy metric (AM) and fluency me
 
 ## Instructions to Run the Baseline
 
-This component aims to assess the semantic aspect of system responses.
+This component aims to assess the semantic aspect of system responses. The fine-tuned AM and FM models can be downloaded at https://drive.google.com/file/d/1SIM-On9MEdpr6OFkWs2YmhCgqnLNJAnS/view?usp=sharing
 
 ### 1. Fine-tune BERT for Adequacy Metric
 ```
