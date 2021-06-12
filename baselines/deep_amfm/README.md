@@ -48,3 +48,13 @@ python run_language_modeling.py \
 	--per_device_eval_batch_size=4 \
 	--block_size=512
 ```
+
+### 3. Compute Reference-based AM-FM Scores
+```
+python compute_wr.py \
+	--dataset=${name of evaluation dataset} \
+	--device=${cpu or cuda} \
+	--am_model_path=embedding_models/full_am \
+	--fm_model_path=language_models/full_fm \
+	--criterion=${dialogue qualities to evaluate (separated by commas)}
+```
