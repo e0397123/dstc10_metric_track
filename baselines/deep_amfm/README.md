@@ -17,18 +17,18 @@ This component aims to assess the semantic aspect of system responses.
 #!/bin/bash                                                                                                                                                                                                    
 data_dir=/path/to/pretraining/dialogue/dataset
 python run_language_modeling.py \
-	--train_data_file=${data_dir}/train.lm \
-	--output_dir=embedding_models/full_am \
-	--model_type=bert \
-	--model_name_or_path=bert-base-uncased \
-	--do_train \
-	--do_eval \
-	--eval_data_file=${data_dir}/dev.lm \
-	--overwrite_output_dir \
-	--per_device_train_batch_size=4 \
-	--per_device_eval_batch_size=4 \
-	--block_size=512 \
-	--mlm
+    --train_data_file=${data_dir}/train.lm \
+    --output_dir=embedding_models/full_am \
+    --model_type=bert \
+    --model_name_or_path=bert-base-uncased \
+    --do_train \
+    --do_eval \
+    --eval_data_file=${data_dir}/dev.lm \
+    --overwrite_output_dir \
+    --per_device_train_batch_size=4 \
+    --per_device_eval_batch_size=4 \
+    --block_size=512 \
+    --mlm
 ```
 
 ### 2. Fine-tune GPT-2 for Fluency Metric
@@ -36,45 +36,45 @@ python run_language_modeling.py \
 #!/bin/bash                                                                                                                                                                                                    
 data_dir=/path/to/pretraining/dialogue/dataset
 python run_language_modeling.py \
-	--train_data_file=${data_dir}/train.lm \
-	--output_dir=language_models/full_fm \
-	--model_type=gpt2 \
-	--model_name_or_path=gpt2 \
-	--do_train \
-	--do_eval \
-	--eval_data_file=${data_dir}/dev.lm \
-	--overwrite_output_dir \
-	--per_device_train_batch_size=4 \
-	--per_device_eval_batch_size=4 \
-	--block_size=512
+    --train_data_file=${data_dir}/train.lm \
+    --output_dir=language_models/full_fm \
+    --model_type=gpt2 \
+    --model_name_or_path=gpt2 \
+    --do_train \
+    --do_eval \
+    --eval_data_file=${data_dir}/dev.lm \
+    --overwrite_output_dir \
+    --per_device_train_batch_size=4 \
+    --per_device_eval_batch_size=4 \
+    --block_size=512
 ```
 
 ### 3. Compute Reference-based AM-FM Scores for Turn-level Dataset
 ```
 python compute_wr.py \
-	--dataset=${name of evaluation dataset} \
-	--device=${cpu or cuda} \
-	--am_model_path=embedding_models/full_am \
-	--fm_model_path=language_models/full_fm \
-	--criterion=${dialogue qualities to evaluate (separated by commas)}
+    --dataset=${name of evaluation dataset} \
+    --device=${cpu or cuda} \
+    --am_model_path=embedding_models/full_am \
+    --fm_model_path=language_models/full_fm \
+    --criterion=${dialogue qualities to evaluate (separated by commas)}
 ```
 
 ### 4. Compute Reference-free AM-FM Scores for Turn-level Dataset
 ```
 python compute_wor.py \
-	--dataset=${name of evaluation dataset} \
-	--device=${cpu or cuda} \
-	--am_model_path=embedding_models/full_am \
-	--fm_model_path=language_models/full_fm \
-	--criterion=${dialogue qualities to evaluate (separated by commas)}
+    --dataset=${name of evaluation dataset} \
+    --device=${cpu or cuda} \
+    --am_model_path=embedding_models/full_am \
+    --fm_model_path=language_models/full_fm \
+    --criterion=${dialogue qualities to evaluate (separated by commas)}
 ```
 
 ### 5. Compute Reference-free AM-FM Scores for Dialogue-level Dataset
 ```
 python compute_dial.py \
-	--dataset=${name of evaluation dataset} \
-	--device=${cpu or cuda} \
-	--am_model_path=embedding_models/full_am \
-	--fm_model_path=language_models/full_fm \
-	--criterion=${dialogue qualities to evaluate (separated by commas)}
+    --dataset=${name of evaluation dataset} \
+    --device=${cpu or cuda} \
+    --am_model_path=embedding_models/full_am \
+    --fm_model_path=language_models/full_fm \
+    --criterion=${dialogue qualities to evaluate (separated by commas)}
 ```
