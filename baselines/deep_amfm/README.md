@@ -60,7 +60,7 @@ python compute_wr.py \
     --device=${cpu or cuda} \
     --am_model_path=embedding_models/full_am \
     --fm_model_path=language_models/full_fm \
-    --criterion=${dialogue qualities to evaluate (separated by commas)}
+    --criterion=${dialogue qualities to evaluate (separated by space)}
 ```
 
 ### 4. Compute Reference-free AM-FM Scores for Turn-level Dataset
@@ -70,7 +70,7 @@ python compute_wor.py \
     --device=${cpu or cuda} \
     --am_model_path=embedding_models/full_am \
     --fm_model_path=language_models/full_fm \
-    --criterion=${dialogue qualities to evaluate (separated by commas)}
+    --criterion=${dialogue qualities to evaluate (separated by space)}
 ```
 
 ### 5. Compute Reference-free AM-FM Scores for Dialogue-level Dataset
@@ -80,7 +80,7 @@ python compute_dial.py \
     --device=${cpu or cuda} \
     --am_model_path=embedding_models/full_am \
     --fm_model_path=language_models/full_fm \
-    --criterion=${dialogue qualities to evaluate (separated by commas)}
+    --criterion=${dialogue qualities to evaluate (separated by space)}
 ```
 
 ### Reference
