@@ -6,9 +6,25 @@ This component aims to assess the semantic aspect of system responses.
 
 ### Run Adequacy Evaluation
 
-#### Using BERT Embedding Model (most of the steps follow the google official bert repo)
+#### 1. Fine-tune BERT-base Model
+```
+#!/bin/bash                                                                                                                                                                                                    
+data_dir=/path/to/pretraining/dialogue/dataset
 
-##### 1. Download the [BERT-Base, Multilingual Cased] pretrained model from https://github.com/google-research/bert and configure the BERT_BASE_DIR environment variable.
+python run_language_modeling.py \
+	--train_data_file=${data_dir}/train.lm \
+	--output_dir=embedding_models/full_am \
+	--model_type=bert \
+	--model_name_or_path=bert-base-uncased \
+	--do_train \
+	--do_eval \
+	--eval_data_file=${data_dir}/dev.lm \
+	--overwrite_output_dir \
+	--per_device_train_batch_size=4 \
+	--per_device_eval_batch_size=4 \
+	--block_size=512 \
+	--mlm
+```
 
 ##### 2. Create preprocessed training and validation data with specific training size. This step is to conduct preprocessing on the twitter dialogues.
 ```bash
