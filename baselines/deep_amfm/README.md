@@ -6,7 +6,7 @@ This component aims to assess the semantic aspect of system responses.
 
 ### Run Adequacy Evaluation
 
-#### 1. Fine-tune BERT-base Model (finetune_bert.sh, you may customize your own training dataset)
+#### 1. Fine-tune BERT-base Model (In this step, you may customize your own training dataset)
 ```
 #!/bin/bash                                                                                                                                                                                                    
 data_dir=/path/to/pretraining/dialogue/dataset
