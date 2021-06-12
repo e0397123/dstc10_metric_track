@@ -35,76 +35,18 @@ python run_language_modeling.py \
 ### 2. Fine-tune GPT-2 for Fluency Metric
 ```
 #!/bin/bash                                                                                                                                                                                                    
-data_dir=/path/to/pretraining/dialogue/dataset
+data_dir=datasets
 
 python run_language_modeling.py \
 	--train_data_file=${data_dir}/train.lm \
-	--output_dir=embedding_models/full_am \
-	--model_type=bert \
-	--model_name_or_path=bert-base-uncased \
+	--output_dir=language_models/full_fm \
+	--model_type=gpt2 \
+	--model_name_or_path=gpt2 \
 	--do_train \
 	--do_eval \
 	--eval_data_file=${data_dir}/dev.lm \
 	--overwrite_output_dir \
 	--per_device_train_batch_size=4 \
 	--per_device_eval_batch_size=4 \
-	--block_size=512 \
-	--mlm
-```
-
-##### 3. Create tfrecord pretraining data. The tfrecord data is to easier the pretraining and faster loading. 
-```bash
-python ../../engines/embedding_models/bert/create_pretraining_data.py \
-  --input_file=/path/to/processed/train/file \
-  --output_file=/path/to/processed/train/tfrecord_file \
-  --vocab_file=$BERT_BASE_DIR/vocab.txt \
-  --do_lower_case=True \
-  --max_seq_length=60 \
-  --max_predictions_per_seq=9 \
-  --masked_lm_prob=0.15 \
-  --random_seed=12345 \
-  --dupe_factor=5
-```
-
-##### 4. Conduct pretraining of bert model
-```bash
-CUDA_VISIBLE_DEVICES=1 python ../../engines/embedding_models/bert/run_pretraining.py \
-  --train_input_file=/path/to/processed/train/tfrecord_file \
-  --valid_input_file=/path/to/processed/valid/tfrecord_file \
-  --output_dir=/path/to/save/model \
-  --do_train=True \
-  --do_eval=True \
-  --bert_config_file=$BERT_BASE_DIR/bert_config.json \
-  --init_checkpoint=$BERT_BASE_DIR/bert_model.ckpt \
-  --train_batch_size=8 \
-  --max_seq_length=60 \
-  --max_predictions_per_seq=9 \
-  --num_train_steps=5000 \
-  --max_eval_steps=100 \
-  --num_warmup_steps=100 \
-  --learning_rate=2e-5
-```
-
-##### 5. Feature extraction. This step is to extract fixed word-level contextualized embedding.
-```bash
-CUDA_VISIBLE_DEVICES=1 python ../../engines/embedding_models/bert/extract_features.py \
-  --input_file=/path/to/processed/hypothesis/file \
-  --output_file=/path/to/extracted/hypothesis/json/file \
-  --vocab_file=$BERT_BASE_DIR/vocab.txt \
-  --bert_config_file=$BERT_BASE_DIR/bert_config.json \
-  --init_checkpoint=/path/to/the/trained/checkpoint \
-  --layers=-1,-2,-3,-4 \
-  --max_seq_length=60 \
-  --batch_size=8
-```
-```bash
-CUDA_VISIBLE_DEVICES=1 python ../../engines/embedding_models/bert/extract_features.py \
-  --input_file=/path/to/processed/reference/file \
-  --output_file=/path/to/extracted/reference/json/file \
-  --vocab_file=$BERT_BASE_DIR/vocab.txt \
-  --bert_config_file=$BERT_BASE_DIR/bert_config.json \
-  --init_checkpoint=/path/to/the/trained/checkpoint \
-  --layers=-1,-2,-3,-4 \
-  --max_seq_length=60 \
-  --batch_size=8
+	--block_size=512
 ```
