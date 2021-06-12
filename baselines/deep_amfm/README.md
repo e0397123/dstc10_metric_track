@@ -49,9 +49,29 @@ python run_language_modeling.py \
 	--block_size=512
 ```
 
-### 3. Compute Reference-based AM-FM Scores
+### 3. Compute Reference-based AM-FM Scores for Turn-level Dataset
 ```
 python compute_wr.py \
+	--dataset=${name of evaluation dataset} \
+	--device=${cpu or cuda} \
+	--am_model_path=embedding_models/full_am \
+	--fm_model_path=language_models/full_fm \
+	--criterion=${dialogue qualities to evaluate (separated by commas)}
+```
+
+### 4. Compute Reference-free AM-FM Scores for Turn-level Dataset
+```
+python compute_wor.py \
+	--dataset=${name of evaluation dataset} \
+	--device=${cpu or cuda} \
+	--am_model_path=embedding_models/full_am \
+	--fm_model_path=language_models/full_fm \
+	--criterion=${dialogue qualities to evaluate (separated by commas)}
+```
+
+### 5. Compute Reference-free AM-FM Scores for Dialogue-level Dataset
+```
+python compute_dial.py \
 	--dataset=${name of evaluation dataset} \
 	--device=${cpu or cuda} \
 	--am_model_path=embedding_models/full_am \
