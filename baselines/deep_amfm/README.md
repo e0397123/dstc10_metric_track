@@ -83,11 +83,7 @@ python compute_dial.py \
 
 ```
 @Inbook{Zhang2021,
-    author="Zhang, Chen
-            and D'Haro, Luis Fernando
-            and Banchs, Rafael E.
-            and Friedrichs, Thomas
-            and Li, Haizhou",
+    author="Zhang, Chen and D'Haro, Luis Fernando and Banchs, Rafael E. and Friedrichs, Thomas and Li, Haizhou",
     title="Deep AM-FM: Toolkit for Automatic Dialogue Evaluation",
     bookTitle="Conversational Dialogue Systems for the Next Decade",
     year="2021",
