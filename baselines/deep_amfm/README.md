@@ -16,7 +16,6 @@ This component aims to assess the semantic aspect of system responses.
 ```
 #!/bin/bash                                                                                                                                                                                                    
 data_dir=/path/to/pretraining/dialogue/dataset
-
 python run_language_modeling.py \
 	--train_data_file=${data_dir}/train.lm \
 	--output_dir=embedding_models/full_am \
@@ -35,8 +34,7 @@ python run_language_modeling.py \
 ### 2. Fine-tune GPT-2 for Fluency Metric
 ```
 #!/bin/bash                                                                                                                                                                                                    
-data_dir=datasets
-
+data_dir=/path/to/pretraining/dialogue/dataset
 python run_language_modeling.py \
 	--train_data_file=${data_dir}/train.lm \
 	--output_dir=language_models/full_fm \
