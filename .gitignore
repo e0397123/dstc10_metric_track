@@ -128,9 +128,8 @@ dmypy.json
 # Pyre type checker
 .pyre/
 datasets/
-embedding_models/
+*/*/embedding_models/
 human_evaluation_data/
-language_models/
+*/*/language_models/
 runs/
 wandb/
-

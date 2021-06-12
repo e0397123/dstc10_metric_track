@@ -33,7 +33,7 @@ if __name__ == '__main__':
     gpt2_model = GPT2LMHeadModel.from_pretrained(fm_model_path).to(device)
     gpt2_model.eval()
 
-    full_data = json.load(open('human_evaluation_data/{}_eval.json'.format(dataset), 'r'))
+    full_data = json.load(open('../../human_evaluation_data/{}_eval.json'.format(dataset), 'r'))
     response_list =[]
     reference_list =[]
     human_scores = {}
