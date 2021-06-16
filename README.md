@@ -22,25 +22,40 @@ Please register and download the data at https://chateval.org/dstc10. Once downl
 
 ### Data Statistics
 
-| Dataset                | No. Turns/Dialogues  |    No. Anno Qualites       |      No. Annos          |     AVG. Utts          |     AVG. Words per Utts          |          
-|----------------------- |-------------------   |----------------------------|-------------------------|------------------------|----------------------------------|
-| DSTC6-Eval (D6)        | 40000                |    1                       |      400000             |     2.63               |     12.36                        |
-| DSTC7-Eval (D7)        | 500                  |    1                       |      1500               |     4.92               |     20.18                        |
-| Persona-Chatlog (PC)** | 3316                 |    9                       |      29844              |     12.00              |     7.59                         |
-| PersonaChat-USR (UP)   | 300                  |    6                       |      5400               |     9.30               |     11.87                        |
-| TopicalChat-USR (TP)   | 360                  |    6                       |      6480               |     11.20              |     23.14                        |
-| FED-Turn (FT)*         | 375                  |    9                       |      3348               |     10.37              |     9.70                         |
-| FED-Conversation (FC)**| 125                  |    11                      |      1364               |     12.72              |     8.70                         |
-| DailyDialog-Eval (GD)  | 500                  |    1                       |      1500               |     4.92               |     12.36                        |
-| DailyDialog-Eval (ZD)  | 900                  |    4                       |      14400              |     4.72               |     13.39                        |
-| PersonaChat-Eval (ZP)  | 900                  |    1                       |      3600               |     5.13               |     12.77                        |
-| DailyDialog-Eval (ED)* | 300                  |    1                       |      3000               |     3.00               |     12.25                        |
-| Empathetic-Eval (EE)*  | 300                  |    1                       |      3000               |     3.00               |     14.86                        |
-| ConvAI2-Eval (EC)*     | 300                  |    1                       |      3000               |     3.00               |     11.89                        |
-| HUMOD (HU)             | 9500                 |    2                       |      57000              |     2.00               |     14.51                        |
+| Dataset                   | No. Turns/Dialogues  | No. Anno Qualites  | No. Annos  | AVG. Utts  | AVG. Words per Utts  |          
+|-------------------------- |-------------------   |--------------------|------------|------------|----------------------|
+| DSTC6-Eval (D6)           | 40000                |    1               | 400000     | 2.63       | 12.36                |
+| DSTC7-Eval (D7)           | 500                  |    1               | 1500       | 4.92       | 20.18                |
+| Persona-Chatlog (PC)\*\*  | 3316                 |    9               | 29844      | 12.00      | 7.59                 |
+| PersonaChat-USR (UP)      | 300                  |    6               | 5400       | 9.30       | 11.87                |
+| TopicalChat-USR (TP)      | 360                  |    6               | 6480       | 11.20      | 23.14                |
+| FED-Turn (FT)*            | 375                  |    9               | 3348       | 10.37      | 9.70                 |
+| FED-Conversation (FC)\*\* | 125                  |    11              | 1364       | 12.72      | 8.70                 |
+| DailyDialog-Eval (GD)     | 500                  |    1               | 1500       | 4.92       | 12.36                |
+| DailyDialog-Eval (ZD)     | 900                  |    4               | 14400      | 4.72       | 13.39                |
+| PersonaChat-Eval (ZP)     | 900                  |    1               | 3600       | 5.13       | 12.77                |
+| DailyDialog-Eval (ED)\*   | 300                  |    1               | 3000       | 3.00       | 12.25                |
+| Empathetic-Eval (EE)\*    | 300                  |    1               | 3000       | 3.00       | 14.86                |
+| ConvAI2-Eval (EC)*        | 300                  |    1               | 3000       | 3.00       | 11.89                |
+| HUMOD (HU)                | 9500                 |    2               | 57000      | 2.00       | 14.51                |
 
 \* indicates no reference response <br />
 \*\* denotes interactive dialogue-level evalaution dataset 
+
+### JSON Data Formats
+
+#### Turn-level Evaluation
+
+The *xxx_eval.json* file includes the list of instances each of which is a context-response pair data point.
+Each instance :
+
+* speaker: the speaker of the turn (string: "U" for user turn/"S" for system turn)
+* text: utterance text (string)
+* nbest 
+  [
+    * hyp: ASR hypothesis (string)
+    * score: language model score (float)
+  ]
 
 ## Organizers
 - Chen Zhang (National University of Singapore, Singapore)
