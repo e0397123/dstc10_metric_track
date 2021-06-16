@@ -51,10 +51,23 @@ Key components of each instance :
 
 * context: the dialogue context delimited by *\n* token
 * response: the corresponding system response following the context
-* annotations 
+* annotations: 
+  {
+    * [annotation quality]: list of scores
+ }
+ 
+#### Dialogue-level Evaluation
+
+The *xxx_eval.json* file includes the list of instances each of which is a single conversation.
+Key components of each instance :
+
+* dialogue (list of utterances): 
+  [{speaker: xxx, text: xxx}, ......]
+* annotations: 
   {
     * [annotation quality]: list of scores
  } 
+
 
 ## Organizers
 - Chen Zhang (National University of Singapore, Singapore)
