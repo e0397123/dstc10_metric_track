@@ -44,7 +44,7 @@ Please register and download the data at https://chateval.org/dstc10. Once downl
 
 ### JSON Data Formats
 
-#### Turn-level Evaluation
+#### Turn-level
 
 The *xxx_eval.json* file includes the list of instances each of which is a context-response pair data point.
 Key components of each instance :
@@ -56,7 +56,7 @@ Key components of each instance :
     * [annotation quality]: list of scores <br />
   }
  
-#### Dialogue-level Evaluation
+#### Dialogue-level
 
 The *xxx_eval.json* file includes the list of instances each of which is a single conversation.
 Key components of each instance :
