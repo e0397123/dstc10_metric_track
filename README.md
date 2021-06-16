@@ -74,7 +74,6 @@ Key components of each instance :
 * Validation data released: Jun 14, 2021
 * Test data released: Sep 13, 2021
 * Entry submission deadline: Sep 21, 2021
-* Objective evaluation completed: Sep 28, 2021
 * Final result announcement: Oct 8, 2021
 
 ## Organizers
