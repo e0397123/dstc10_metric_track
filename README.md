@@ -64,7 +64,7 @@ Key components of each instance :
 * dialogue (list of utterances): 
   [
     * {speaker: xxx, text: xxx}
-  * ]
+* ]
 * annotations: 
   {
     * [annotation quality]: list of scores
