@@ -47,15 +47,15 @@ Please register and download the data at https://chateval.org/dstc10. Once downl
 #### Turn-level Evaluation
 
 The *xxx_eval.json* file includes the list of instances each of which is a context-response pair data point.
-Each instance :
+Key components of each instance :
 
-* speaker: the speaker of the turn (string: "U" for user turn/"S" for system turn)
-* text: utterance text (string)
-* nbest 
-  [
-    * hyp: ASR hypothesis (string)
+* context: the dialogue context delimited by *\n* token
+* response: the corresponding system response following the context
+* annotations 
+  {
+    * [annotation quality]: list of scores
     * score: language model score (float)
-  ]
+ } 
 
 ## Organizers
 - Chen Zhang (National University of Singapore, Singapore)
