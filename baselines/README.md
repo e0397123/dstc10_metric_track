@@ -22,4 +22,4 @@ List of useful repositories for automatic dialogue evaluation
 For comprehensive surveys, please refer to:
 - [Survey on evaluation methods for dialogue systems, Deriu et al., 2021](https://link.springer.com/article/10.1007/s10462-020-09866-x)
 - [A Comprehensive Assessment of Dialog Evaluation Metrics, Yeh et al., 2021](https://arxiv.org/abs/2106.03706)
-- [A Survey of Evaluation Metrics Used for NLG Systems, Sai et al., 2020]
+- [A Survey of Evaluation Metrics Used for NLG Systems, Sai et al., 2020](https://arxiv.org/abs/2008.12009)
