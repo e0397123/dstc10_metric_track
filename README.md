@@ -49,7 +49,7 @@ Please register and download the data at https://chateval.org/dstc10. Once downl
 The *xxx_eval.json* file includes the list of instances each of which is a context-response pair data point.
 Key components of each instance :
 
-* context: the dialogue context delimited by */n* token
+* context: the dialogue context delimited by *\n* token
 * response: the corresponding system response following the context
 * annotations: 
   {
