@@ -1,6 +1,6 @@
 # Baselines of the Metric Track
 
-List of useful repositories for automatic dialogue evaluation
+We provide the [deep AM-FM, zhang et al., 2021](https://link.springer.com/chapter/10.1007/978-981-15-8395-7_5) baseline system. Below is an incomplete list of useful repositories for automatic dialogue evaluation: 
 - https://github.com/Maluuba/nlg-eval
 - https://github.com/ZHAOTING/dialog-processing
 - https://github.com/Shikib/usr
