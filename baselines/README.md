@@ -18,7 +18,6 @@ We provide the [deep AM-FM](https://link.springer.com/chapter/10.1007/978-981-15
 - https://github.com/PlusLabNLP/PredictiveEngagement
 - https://github.com/harsh19/Diverse-Reference-Augmentation/
 - https://github.com/prakharguptaz/multirefeval
-- https://github.com/harsh19/Diverse-Reference-Augmentation/
 
 For comprehensive surveys, please refer to:
 - [Survey on evaluation methods for dialogue systems, Deriu et al., 2021](https://link.springer.com/article/10.1007/s10462-020-09866-x)
