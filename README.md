@@ -54,7 +54,6 @@ Key components of each instance :
 * annotations 
   {
     * [annotation quality]: list of scores
-    * score: language model score (float)
  } 
 
 ## Organizers
