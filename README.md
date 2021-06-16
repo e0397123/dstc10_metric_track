@@ -65,11 +65,11 @@ Key components of each instance :
   [
     * {speaker: xxx, text: xxx}, 
     * ......
-  ]
+  <br />]
 * annotations: 
   {
     * [annotation quality]: list of scores
- } 
+ <br />} 
 
 
 ## Organizers
