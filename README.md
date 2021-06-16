@@ -53,8 +53,8 @@ Key components of each instance :
 * response: the corresponding system response following the context
 * annotations: 
   {
-    * [annotation quality]: list of scores
- * }
+    * [annotation quality]: list of scores \\
+ }
  
 #### Dialogue-level Evaluation
 
