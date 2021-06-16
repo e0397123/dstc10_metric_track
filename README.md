@@ -63,8 +63,7 @@ Key components of each instance :
 
 * dialogue (list of utterances): 
   [
-    * {speaker: xxx, text: xxx}, 
-    * ......
+    * {speaker: xxx, text: xxx}
   * ]
 * annotations: 
   {
