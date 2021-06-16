@@ -62,7 +62,10 @@ The *xxx_eval.json* file includes the list of instances each of which is a singl
 Key components of each instance :
 
 * dialogue (list of utterances): 
-  [{speaker: xxx, text: xxx}, ......]
+  [
+    * {speaker: xxx, text: xxx}, 
+    * ......
+  ]
 * annotations: 
   {
     * [annotation quality]: list of scores
