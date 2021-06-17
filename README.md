@@ -72,7 +72,7 @@ Key components of each instance :
 * reference: list of human-written reference responses w.r.t the context
 * annotations: 
   {
-    * [annotation quality]: list of scores
+    * [dialogue quality]: list of scores provided by annotators
   }
  
 #### Dialogue-level
@@ -88,7 +88,7 @@ Key components of each instance :
   ]
 * annotations: 
   {
-    * [annotation quality]: list of scores
+    * [dialogue quality]: list of scores provided by annotators
   } 
 
 ## Timeline
