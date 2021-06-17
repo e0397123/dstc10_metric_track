@@ -91,7 +91,7 @@ Key components of each instance :
     * [dialogue quality]: list of scores provided by annotators
   } 
 
-## How will we rank all the metrics in the leaderboard?
+## How will we rank all the submitted metrics in the leaderboard?
 
 During development phase
 
