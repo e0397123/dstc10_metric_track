@@ -101,7 +101,7 @@ During development phase
 
 During the final evaluation phase
 
-* We will adopt a weighted average approach determin the final ranking of the submitted metrics based on their performance on the validation set as well as the hidden test set which will be released after the development phase. A high weightage will be given to the metrics' performance on the hidden test set.
+* We will adopt a weighted average approach determine the final ranking of the submitted metrics based on their performance on the validation set as well as the hidden test set which will be released after the development phase. A high weightage will be given to the metrics' performance on the hidden test set.
 
 ## Timeline
 * Validation data released: Jun 14, 2021
