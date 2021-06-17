@@ -41,7 +41,7 @@ Please register and download the data at https://chateval.org/dstc10. Once downl
 
 ### Data Meta-information
 
-| Dataset                   | Contains Reference ?  | Multiple Reference ?  | Annotation Granualrity ?  |         
+| Dataset                   | Contains References ? | Multiple References ? | Annotation Granualrity    |         
 |-------------------------- |-----------------------|-----------------------|---------------------------|
 | DSTC6-Eval (D6)           | Yes                   | No                    | Turn-level                |
 | DSTC7-Eval (D7)           | Yes                   | Yes                   | Turn-level                |
