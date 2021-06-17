@@ -16,7 +16,7 @@ def compute_fm_score(x, y):
     return max([x,y]) / min([x,y])
 
 dataset_meta_info ={
-    'fed-dialogue': {
+    'fed-dial': {
         'annotations': ['Coherent', 'Error recovery', 'Consistent', 'Diverse', 'Depth', 'Likeable', 'Understanding', 'Flexible', 'Informative', 'Inquisitive', 'Overall'],
         'aggregation':np.mean},
     'persona-see': {
