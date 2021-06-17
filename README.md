@@ -37,7 +37,7 @@ Please register and download the data at https://chateval.org/dstc10. Once downl
 | DailyDialog-Grade (ED)    | 300                  |    1                | 3000       | 3.00       | 12.25                |
 | Empathetic-Grade (EE)     | 300                  |    1                | 3000       | 3.00       | 14.86                |
 | ConvAI2-Grade (EC)        | 300                  |    1                | 3000       | 3.00       | 11.89                |
-| HUMOD (HU)                | 9500                 |    2                | 57000      | 2.00       | 14.51                |
+| HUMOD (HU)                | 9500                 |    2                | 57000      | 3.95       | 4.31                 |
 
 ### Data Meta-information
 
