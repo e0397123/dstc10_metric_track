@@ -91,6 +91,18 @@ Key components of each instance :
     * [dialogue quality]: list of scores provided by annotators
   } 
 
+## How will we rank all the metrics in the leaderboard?
+
+During development phase
+
+* We will first average the Spearman correlation scores of the submitted metric within the dataset.
+* Next, all the dataset-wise average Spearman correlation scores will be averaged across all the 14 datasets.
+* The submitted metrics will be ranked based on the final single Spearman correlation score.
+
+During the final evaluation phase
+
+* We will adopt a weighted average approach determin the final ranking of the submitted metrics based on their performance on the validation set as well as the hidden test set which will be released after the development phase.
+
 ## Timeline
 * Validation data released: Jun 14, 2021
 * Test data released: Sep 13, 2021
