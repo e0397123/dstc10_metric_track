@@ -24,7 +24,7 @@ Please register and download the data at https://chateval.org/dstc10. Once downl
 
 | Dataset                   | No. Turns/Dialogues  | No. Anno Qualities  | No. Annos  | AVG. Utts  | AVG. Words per Utts  |           
 |-------------------------- |--------------------- |---------------------|------------|------------|----------------------|
-| DSTC6-Eval (D6)           | 40000                |    1                | 400000     | 2.63       | 12.36                |
+| DSTC6-Eval (D6)           | 40000                |    1                | 400000     | 2.63       | 11.36                |
 | DSTC7-Eval (D7)           | 9900                 |    1                | 29700      | 4.92       | 20.18                |
 | Persona-Chatlog (PC)      | 3316                 |    9                | 29844      | 12.00      | 7.59                 |
 | PersonaChat-USR (UP)      | 300                  |    6                | 5400       | 9.30       | 11.87                |
@@ -32,8 +32,8 @@ Please register and download the data at https://chateval.org/dstc10. Once downl
 | FED-Turn (FT)             | 375                  |    9                | 3348       | 10.37      | 9.70                 |
 | FED-Conversation (FC)     | 125                  |    11               | 1364       | 12.72      | 8.70                 |
 | DailyDialog-Gupta (GD)    | 500                  |    1                | 1500       | 4.92       | 12.36                |
-| DailyDialog-Zhao (ZD)     | 900                  |    4                | 14400      | 4.72       | 13.39                |
-| PersonaChat-Zhao (ZP)     | 900                  |    1                | 3600       | 5.13       | 12.77                |
+| DailyDialog-Zhao (ZD)     | 900                  |    4                | 14400      | 4.72       | 12.39                |
+| PersonaChat-Zhao (ZP)     | 900                  |    1                | 3600       | 5.13       | 11.77                |
 | DailyDialog-Grade (ED)    | 300                  |    1                | 3000       | 3.00       | 12.25                |
 | Empathetic-Grade (EE)     | 300                  |    1                | 3000       | 3.00       | 14.86                |
 | ConvAI2-Grade (EC)        | 300                  |    1                | 3000       | 3.00       | 11.89                |
