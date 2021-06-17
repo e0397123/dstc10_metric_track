@@ -91,7 +91,7 @@ Key components of each instance :
     * [dialogue quality]: list of scores provided by annotators
   } 
 
-Note that for UP, TP and PC, there are additional information w.r.t facts or personas associated with the dialogues. Participants may or may not make use of these information to design their metrics.
+Note that for UP, TP and PC, there are additional information w.r.t facts or personas associated with the dialogues. Participants may consider using these information to design their metrics.
 
 ## How will we rank all the submitted metrics in the leaderboard?
 
