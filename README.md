@@ -51,8 +51,8 @@ Please register and download the data at https://chateval.org/dstc10. Once downl
 | FED-Turn (FT)             | No                    | -                     | Turn-level                |
 | FED-Conversation (FC)     | No                    | -                     | Dialogue-level            |
 | DailyDialog-Gupta (GD)    | Yes                   | Yes                   | Turn-level                |
-| DailyDialog-Zhao (ZD)     | No                    | -                     | Turn-level                |
-| PersonaChat-Zhao (ZP)     | No                    | -                     | Turn-level                |
+| DailyDialog-Zhao (ZD)     | Yes                   | No                    | Turn-level                |
+| PersonaChat-Zhao (ZP)     | Yes                   | No                    | Turn-level                |
 | DailyDialog-Grade (ED)    | No                    | -                     | Turn-level                |
 | Empathetic-Grade (EE)     | No                    | -                     | Turn-level                |
 | ConvAI2-Grade (EC)        | No                    | -                     | Turn-level                |
