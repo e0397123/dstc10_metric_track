@@ -65,8 +65,11 @@ Please register and download the data at https://chateval.org/dstc10. Once downl
 The *xxx_eval.json* file includes the list of instances each of which is a context-response pair data point.
 Key components of each instance :
 
+* dialogue_id: the unique id assigned to each data instance
+* model: name of system that generated the response based on the context
 * context: the dialogue context delimited by *\n* token
 * response: the corresponding system response following the context
+* reference: list of human-written reference responses w.r.t the context
 * annotations: 
   {
     * [annotation quality]: list of scores
@@ -77,6 +80,8 @@ Key components of each instance :
 The *xxx_eval.json* file includes the list of instances each of which is a single conversation.
 Key components of each instance :
 
+* dialogue_id: the unique id assigned to each data instance
+* model: name of system that generated the response based on the context
 * dialogue (list of utterances): 
   [
     * {speaker: xxx, text: xxx}
