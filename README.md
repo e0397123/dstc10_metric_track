@@ -44,7 +44,7 @@ Please register and download the data at https://chateval.org/dstc10. Once downl
 | Dataset                   | Contains References ? | Multiple References ? | Annotation Granualrity    |         
 |-------------------------- |-----------------------|-----------------------|---------------------------|
 | DSTC6-Eval (D6)           | Yes                   | No                    | Turn-level                |
-| DSTC7-Eval (D7)           | Yes                   | Yes                   | Turn-level                |
+| DSTC7-Eval (D7)           | Yes                   | No                    | Turn-level                |
 | Persona-Chatlog (PC)      | No                    | -                     | Dialogue-level            |
 | PersonaChat-USR (UP)      | Yes                   | No                    | Turn-level                |
 | TopicalChat-USR (TP)      | Yes                   | No                    | Turn-level                |
