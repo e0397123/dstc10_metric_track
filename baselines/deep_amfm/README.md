@@ -82,6 +82,7 @@ python compute_dial.py \
     --fm_model_path=language_models/full_fm \
     --criterion=${dialogue qualities to evaluate (separated by space)}
 ```
+Note that for the reference-free version, we consider the current response w.r.t the previous utterance. 
 
 ### Reference
 
