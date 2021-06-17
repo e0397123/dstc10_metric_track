@@ -1,3 +1,4 @@
+import pandas as pd
 import json
 import torch
 import numpy as np
@@ -10,9 +11,60 @@ from transformers import BertModel, BertTokenizer, GPT2Tokenizer, GPT2LMHeadMode
 torch.manual_seed(2000)
 np.random.seed(2000)
 
+dataset_meta_info ={ 
+    'dstc6': {
+        'context':1, 
+        'num_references':11, 
+        'annotations': ['overall'], 
+        'aggregation':np.mean},
+    'dstc7' : {
+        'context':1, 
+        'num_references':1, 
+        'annotations': ['relevance', 'informativeness', 'overall'], 
+        'aggregation':np.mean},
+    'dailydialog-gupta' : { 
+        'context':-1, 
+        'num_references':4, 
+        'annotations': ['overall'], 
+        'aggregation':lambda x: x[0]},
+    'dailydialog-zhao' : { 
+        'context':-1, 
+        'num_references':1, 
+        'annotations': ['content', 'grammar','overall','relevance'], 
+        'aggregation':np.mean},
+    'humod' : { 
+        'context':1, 
+        'num_references':3, 
+        'annotations': ['language_usage', 'relevance'], 
+        'aggregation':np.mean},
+     'persona-usr' : { 
+        'context':1, 
+        'num_references':1, 
+        'annotations': ['Understandable', 'Natural', 'Maintains Context', 'Engaging', 'Uses Knowledge', 'Overall'], 
+        'aggregation':np.mean},
+     'persona-zhao' : { 
+        'context':1, 
+        'num_references':1, 
+        'annotations': ['overall'], 
+        'aggregation':np.mean}, 
+      'topical-usr' : { 
+        'context':1, 
+        'num_references':1, 
+        'annotations': ['Understandable', 'Natural', 'Maintains Context', 'Engaging', 'Uses Knowledge', 'Overall'], 
+        'aggregation':np.mean},       
+        
+}
+
+
 def compute_fm_score(x, y):
     return max([x,y]) / min([x,y])
 
+
+def normalize_df(dataset_name, df, ds_meta):
+    dataset_meta = ds_meta[dataset_name]
+    for annotation in dataset_meta['annotations']:
+        df['annotations.' + annotation] = df['annotations.' + annotation].apply(dataset_meta['aggregation'])
+    return df
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -20,7 +72,6 @@ if __name__ == '__main__':
     parser.add_argument('--device', type=str, default='cuda:0')
     parser.add_argument('--am_model_path', type=str, default='embedding_models/persona_am/')
     parser.add_argument('--fm_model_path', type=str, default='language_models/persona_fm')
-    parser.add_argument('--criterion', nargs='+')
     args = parser.parse_args()
     print(args)
     globals().update(args.__dict__)
@@ -33,18 +84,19 @@ if __name__ == '__main__':
     gpt2_model = GPT2LMHeadModel.from_pretrained(fm_model_path).to(device)
     gpt2_model.eval()
 
-    full_data = json.load(open('../../human_evaluation_data/{}_eval.json'.format(dataset), 'r'))
-    response_list =[]
-    reference_list =[]
+    with open('../../human_evaluation_data/{}_eval.json'.format(dataset)) as f:
+        df = pd.json_normalize(json.load(f))
+    df = normalize_df(dataset, df, dataset_meta_info)
+
+    response_list = df.response.to_list()
+    response_list = [item if item != '' else "no response" for item in response_list]
+
+    reference_list = df.reference.to_list()
+    annotations = ["annotations." + _ for _ in dataset_meta_info[dataset]["annotations"]]
     human_scores = {}
-    for c in criterion:
-        human_scores[c] = []
-    for item in full_data:
-        if len(item['reference']) >= 1:
-            response_list.append(item['response'])
-            reference_list.append(item['reference'])
-            for c in criterion:
-                human_scores[c].append(np.mean(item['annotations'][c]))
+    for k in annotations:
+        human_scores[k] = list(df[k])
+    
     response_embedding_list = []
     with torch.no_grad():
         for r in tqdm(response_list):
@@ -76,6 +128,8 @@ if __name__ == '__main__':
         print("Pearson Correlation of AM along {}: {} with p value: {}".format(k, pear, p))
         spear, p = spearmanr(v, am_scores)
         print("Spearman Correlation of AM along {}: {} with p value: {}".format(k, spear, p))
+    
+    df['am_scores'] = am_scores
 
     response_fm_score_list = []
     with torch.no_grad():
@@ -110,7 +164,9 @@ if __name__ == '__main__':
         print("Pearson Correlation of FM along {}: {} with p value: {}".format(k, pear, p))
         spear, p = spearmanr(v, fm_scores)
         print("Spearman Correlation of FM along {}: {} with p value: {}".format(k, spear, p))
-
+    
+    df['fm_scores'] = fm_scores
+    
     am_fm_scores = [np.mean([x, y]) for x, y in zip(am_scores, fm_scores)]
     for k, v in human_scores.items():
         pear, p = pearsonr(v, am_fm_scores)
@@ -118,3 +174,5 @@ if __name__ == '__main__':
         spear, p = spearmanr(v, am_fm_scores)
         print("Spearman Correlation of AM-FM along {}: {} with p value: {}".format(k, spear, p))
 
+    df['am_fm_scores'] = am_fm_scores
+    df.to_csv(dataset + '_results.csv', index=None)

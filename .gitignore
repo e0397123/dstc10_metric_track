@@ -129,8 +129,9 @@ dmypy.json
 .pyre/
 datasets/
 */*/embedding_models/
-human_evaluation_data/
+human_evaluation_data*
 */*/language_models/
 runs/
 wandb/
 .idea
+*/*/*.csv

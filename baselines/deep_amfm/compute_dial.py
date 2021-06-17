@@ -3,6 +3,7 @@ import torch
 import numpy as np
 import argparse
 import pickle
+import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 from tqdm import tqdm
 from scipy.stats import spearmanr, pearsonr
@@ -13,6 +14,21 @@ np.random.seed(2000)
 
 def compute_fm_score(x, y):
     return max([x,y]) / min([x,y])
+
+dataset_meta_info ={
+    'fed-dialogue': {
+        'annotations': ['Coherent', 'Error recovery', 'Consistent', 'Diverse', 'Depth', 'Likeable', 'Understanding', 'Flexible', 'Informative', 'Inquisitive', 'Overall'],
+        'aggregation':np.mean},
+    'persona-see': {
+        'annotations': ['enjoy', 'interest', 'listen', 'turing', 'avoid_rep', 'make_sense', 'fluency', 'inquisitive', 'persona_guess'],
+        'aggregation':np.mean},
+}
+
+def normalize_df(dataset_name, df, ds_meta):
+    dataset_meta = ds_meta[dataset_name]
+    for annotation in dataset_meta['annotations']:
+        df['annotations.' + annotation] = df['annotations.' + annotation].apply(dataset_meta['aggregation'])
+    return df
 
 
 if __name__ == '__main__':
@@ -34,27 +50,36 @@ if __name__ == '__main__':
     gpt2_model = GPT2LMHeadModel.from_pretrained(fm_model_path).to(device)
     gpt2_model.eval()
 
-    full_data = json.load(open('human_evaluation_data/{}_eval.json'.format(dataset), 'r'))
-    full_human_model_pairs = []
+    with open('../../human_evaluation_data/{}_eval.json'.format(dataset)) as f:
+        df = pd.json_normalize(json.load(f))
     human_scores = {}
-    for c in criterion:
-        human_scores[c] = []
-    for item in tqdm(full_data):
-        whole_dialog = item['dialog']
+    annotations = ["annotations." + _ for _ in dataset_meta_info[dataset]["annotations"]]
+    for k in annotations:
+        human_scores[k] = list(df[k])
+    df = normalize_df(dataset, df, dataset_meta_info)
+
+    dialog_list = df.dialog.to_list()
+    full_human_model_pairs = []
+    for whole_dialog in dialog_list:
         human_model_pairs = []
         for idx, utt in enumerate(whole_dialog):
             if utt['speaker'] == 'model' and idx != 0:
                 prev_utt = whole_dialog[idx-1]
                 human_model_pairs.append((prev_utt['text'], utt['text']))
         full_human_model_pairs.append(human_model_pairs)
-        for c in criterion:
-            if c == 'Error recovery':
-                if len(item['annotations'][c]) == 0:
-                    human_scores[c].append((False, 0))
+    
+    # to handle the missing annotations for error recovery category
+    new_human_scores = {}
+    for k, v in human_scores.items():
+        new_human_scores[k] = []
+        for item in v:
+            if 'Error recovery' in k:
+                if len(item) == 0:
+                    new_human_scores[k].append((False, 0))
                 else:
-                    human_scores[c].append((True, np.mean(item['annotations'][c])))
+                    new_human_scores[k].append((True, np.mean(item)))
             else:
-                human_scores[c].append((True, np.mean(item['annotations'][c])))
+                new_human_scores[k].append((True, np.mean(item)))
             
     am_scores_dialog_level = []
     with torch.no_grad():
@@ -73,7 +98,7 @@ if __name__ == '__main__':
     cutoff = np.quantile(am_scores_dialog_level, 0.05)
     modified_rating = np.array([cutoff if t < cutoff else t for t in am_scores_dialog_level])
     normed_am_scores_dialog_level = (modified_rating - cutoff) / np.abs(cutoff)
-    for k, v in human_scores.items():
+    for k, v in new_human_scores.items():
         assert len(v) == len(normed_am_scores_dialog_level)
         s_1 = []
         s_2 = []
@@ -85,7 +110,8 @@ if __name__ == '__main__':
         print("Pearson Correlation of AM along {}: {} with p value: {}".format(k, pear, p))
         spear, p = spearmanr(s_1, s_2)
         print("Spearman Correlation of AM along {}: {} with p value: {}".format(k, spear, p))
-    pickle.dump(normed_am_scores_dialog_level, open("am_scores.pkl", 'wb'))
+    df['am_scores'] = normed_am_scores_dialog_level
+
     fm_scores_dialog_level = []
     with torch.no_grad():
         for dialog in tqdm(full_human_model_pairs):
@@ -105,7 +131,7 @@ if __name__ == '__main__':
     cutoff = np.quantile(fm_scores_dialog_level, 0.05)
     modified_rating = np.array([cutoff if t < cutoff else t for t in fm_scores_dialog_level])
     normed_fm_scores_dialog_level = (modified_rating - cutoff) / np.abs(cutoff)
-    for k, v in human_scores.items():
+    for k, v in new_human_scores.items():
         s_1 = []
         s_2 = []
         for idx, x in enumerate(v):
@@ -116,9 +142,10 @@ if __name__ == '__main__':
         print("Pearson Correlation of FM along {}: {} with p value: {}".format(k, pear, p))
         spear, p = spearmanr(s_1, s_2)
         print("Spearman Correlation of FM along {}: {} with p value: {}".format(k, spear, p))
-    pickle.dump(normed_fm_scores_dialog_level, open("fm_scores.pkl", 'wb'))
+    df['fm_scores'] = normed_fm_scores_dialog_level
+
     am_fm_scores = [np.mean([-x, y]) for x, y in zip(normed_am_scores_dialog_level, normed_fm_scores_dialog_level)]
-    for k, v in human_scores.items():
+    for k, v in new_human_scores.items():
         s_1 = []
         s_2 = []
         for idx, x in enumerate(v):
@@ -129,4 +156,5 @@ if __name__ == '__main__':
         print("Pearson Correlation of AM-FM along {}: {} with p value: {}".format(k, pear, p))
         spear, p = spearmanr(s_1, s_2)
         print("Spearman Correlation of AM-FM along {}: {} with p value: {}".format(k, spear, p))
-    pickle.dump(am_fm_scores, open("amfm_scores.pkl", 'wb'))
+    df['am_fm_scores'] = am_fm_scores
+    df.to_csv(dataset + '_results.csv', index=None)
