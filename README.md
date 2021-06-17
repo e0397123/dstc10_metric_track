@@ -103,6 +103,8 @@ During the final evaluation phase
 
 * We will adopt a weighted average approach determine the final ranking of the submitted metrics based on their performance on the validation set as well as the hidden test set which will be released after the development phase. A high weightage will be given to the metrics' performance on the hidden test set.
 
+Note that it is not necessary to have a single metric score for all the annotated dialogue qualities. Besides high correlation with human judgements, we also encourage explainability of the metrics.
+
 ## Timeline
 * Validation data released: Jun 14, 2021
 * Test data released: Sep 13, 2021
