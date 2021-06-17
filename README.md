@@ -25,7 +25,7 @@ Please register and download the data at https://chateval.org/dstc10. Once downl
 | Dataset                   | No. Turns/Dialogues  | No. Anno Qualities  | No. Annos  | AVG. Utts  | AVG. Words per Utts  |           
 |-------------------------- |--------------------- |---------------------|------------|------------|----------------------|
 | DSTC6-Eval (D6)           | 40000                |    1                | 400000     | 2.63       | 12.36                |
-| DSTC7-Eval (D7)           | 500                  |    1                | 1500       | 4.92       | 20.18                |
+| DSTC7-Eval (D7)           | 9900                 |    1                | 29700      | 4.92       | 20.18                |
 | Persona-Chatlog (PC)      | 3316                 |    9                | 29844      | 12.00      | 7.59                 |
 | PersonaChat-USR (UP)      | 300                  |    6                | 5400       | 9.30       | 11.87                |
 | TopicalChat-USR (TP)      | 360                  |    6                | 6480       | 11.20      | 23.14                |
