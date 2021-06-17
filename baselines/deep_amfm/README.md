@@ -59,8 +59,7 @@ python compute_wr.py \
     --dataset=${name of evaluation dataset} \
     --device=${cpu or cuda} \
     --am_model_path=embedding_models/full_am \
-    --fm_model_path=language_models/full_fm \
-    --criterion=${dialogue qualities to evaluate (separated by space)}
+    --fm_model_path=language_models/full_fm
 ```
 
 ### 4. Compute Reference-free AM-FM Scores for Turn-level Dataset
@@ -69,8 +68,7 @@ python compute_wor.py \
     --dataset=${name of evaluation dataset} \
     --device=${cpu or cuda} \
     --am_model_path=embedding_models/full_am \
-    --fm_model_path=language_models/full_fm \
-    --criterion=${dialogue qualities to evaluate (separated by space)}
+    --fm_model_path=language_models/full_fm
 ```
 
 ### 5. Compute Reference-free AM-FM Scores for Dialogue-level Dataset
@@ -79,8 +77,7 @@ python compute_dial.py \
     --dataset=${name of evaluation dataset} \
     --device=${cpu or cuda} \
     --am_model_path=embedding_models/full_am \
-    --fm_model_path=language_models/full_fm \
-    --criterion=${dialogue qualities to evaluate (separated by space)}
+    --fm_model_path=language_models/full_fm
 ```
 Note that for the reference-free version, we consider the current response w.r.t the previous utterance. It is up to the participants to decide whether they want to incorporate the whole dialogue history, facts or any additional information.
 
