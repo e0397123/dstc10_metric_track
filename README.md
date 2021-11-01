@@ -3,7 +3,7 @@
 In this task, our goal is to seek effective automatic dialogue evaluation metrics that correlates well with human judgements and that are explainable. These metrics can serve as a proxy to human evaluation for fast prototyping of open-domain chatbots.
 
 ## Dataset
-Please register and download the data at https://chateval.org/dstc10. Once downloaded, unzip the human_evaluation_data.zip at the current folder. The dataset is a validation set to test the effectiveness of the proposed metrics. It consists of the following 14 components:
+Please register and download the data at [here](https://chateval.org/dstc10). Once downloaded, unzip the human_evaluation_data.zip at the current folder. The dataset is a validation set to test the effectiveness of the proposed metrics. It consists of the following 14 components:
 
 1. DSTC6-Eval (D6) (Hori et al., 2017)
 2. DSTC7-Eval (D7) (Galley et al., 2019)
@@ -112,6 +112,11 @@ Note that it is not necessary to have a single metric score for all the annotate
 * Test data released: Sep 13, 2021
 * Entry submission deadline: Sep 21, 2021
 * Final result announcement: Oct 1, 2021 - Oct 8, 2021
+
+## Test Data & Results
+
+* Both test data and results can be found at [here](https://chateval.org/dstc10)
+* Detailed results of all submissions can be found at [here](https://docs.google.com/spreadsheets/d/10yl4-tDFEroa_qZsC4Fv_NO2TWjHO31Xv847rWVhPQ8/edit#gid=378909727)
 
 ## Organizers
 - Chen Zhang (National University of Singapore, Singapore)
